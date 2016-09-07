@@ -5,17 +5,21 @@
  */
 package br.com.filarmonica.main;
 
+import javax.swing.JDesktopPane;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+
 /**
  *
  * @author Marcelo Augusto
  */
 public class FormPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormPrincipal
-     */
+    FormPrincipalActionListener listener;
+    
     public FormPrincipal() {
         initComponents();
+        listener = new FormPrincipalActionListener(this);
     }
 
     /**
@@ -27,51 +31,77 @@ public class FormPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        desktopPane = new javax.swing.JDesktopPane();
+        desktopPanel = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        contentMenuItem = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
+        menuCadastros = new javax.swing.JMenu();
+        menuItemMusicos = new javax.swing.JMenuItem();
+        menuItemTocatas = new javax.swing.JMenuItem();
+        menuFrequencia = new javax.swing.JMenu();
+        menuItemLista = new javax.swing.JMenuItem();
+        menuOpcoes = new javax.swing.JMenu();
+        menuItemBackup = new javax.swing.JMenuItem();
+        menuItemSobre = new javax.swing.JMenuItem();
+        menuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gerência de Músicos e Tocatas");
+        setPreferredSize(new java.awt.Dimension(982, 558));
 
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("Cadastrar");
+        menuCadastros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/form-add.png"))); // NOI18N
+        menuCadastros.setMnemonic('c');
+        menuCadastros.setText("Cadastros");
 
-        openMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Músicos");
-        fileMenu.add(openMenuItem);
+        menuItemMusicos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemMusicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/add-musician.png"))); // NOI18N
+        menuItemMusicos.setMnemonic('m');
+        menuItemMusicos.setText("Músicos");
+        menuItemMusicos.setActionCommand("Musicos");
+        menuCadastros.add(menuItemMusicos);
 
-        saveMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Tocatas");
-        fileMenu.add(saveMenuItem);
+        menuItemTocatas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemTocatas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/agenda.png"))); // NOI18N
+        menuItemTocatas.setMnemonic('t');
+        menuItemTocatas.setText("Tocatas");
+        menuCadastros.add(menuItemTocatas);
 
-        menuBar.add(fileMenu);
+        menuBar.add(menuCadastros);
 
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Opções");
+        menuFrequencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/list.png"))); // NOI18N
+        menuFrequencia.setMnemonic('f');
+        menuFrequencia.setText("Frequência");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("Backup (.txt)");
-        helpMenu.add(jMenuItem1);
+        menuItemLista.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemLista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/check.png"))); // NOI18N
+        menuItemLista.setMnemonic('l');
+        menuItemLista.setText("Lista de Frequência");
+        menuItemLista.setActionCommand("Lista");
+        menuFrequencia.add(menuItemLista);
 
-        contentMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
-        contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Sobre");
-        helpMenu.add(contentMenuItem);
+        menuBar.add(menuFrequencia);
 
-        aboutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("Sair");
-        helpMenu.add(aboutMenuItem);
+        menuOpcoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/options.png"))); // NOI18N
+        menuOpcoes.setMnemonic('o');
+        menuOpcoes.setText("Opções");
 
-        menuBar.add(helpMenu);
+        menuItemBackup.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/text-file.png"))); // NOI18N
+        menuItemBackup.setMnemonic('b');
+        menuItemBackup.setText("Backup (.txt)");
+        menuOpcoes.add(menuItemBackup);
+
+        menuItemSobre.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
+        menuItemSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/info.png"))); // NOI18N
+        menuItemSobre.setMnemonic('s');
+        menuItemSobre.setText("Sobre");
+        menuOpcoes.add(menuItemSobre);
+
+        menuItemSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
+        menuItemSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/exit.png"))); // NOI18N
+        menuItemSair.setMnemonic('r');
+        menuItemSair.setText("Sair");
+        menuOpcoes.add(menuItemSair);
+
+        menuBar.add(menuOpcoes);
 
         setJMenuBar(menuBar);
 
@@ -79,14 +109,15 @@ public class FormPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+            .addComponent(desktopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+            .addComponent(desktopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(1031, 597));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -124,16 +155,64 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
     }
 
+    public JDesktopPane getDesktopPanel() {
+        return desktopPanel;
+    }
+
+    public void setDesktopPanel(JDesktopPane desktopPanel) {
+        this.desktopPanel = desktopPanel;
+    }
+
+    public JMenu getMenuCadastros() {
+        return menuCadastros;
+    }
+
+    public JMenu getMenuFrequencia() {
+        return menuFrequencia;
+    }
+
+    public JMenuItem getMenuItemBackup() {
+        return menuItemBackup;
+    }
+
+    public JMenuItem getMenuItemLista() {
+        return menuItemLista;
+    }
+
+    public JMenuItem getMenuItemMusicos() {
+        return menuItemMusicos;
+    }
+
+    public JMenuItem getMenuItemSair() {
+        return menuItemSair;
+    }
+
+    public JMenuItem getMenuItemSobre() {
+        return menuItemSobre;
+    }
+
+    public JMenuItem getMenuItemTocatas() {
+        return menuItemTocatas;
+    }
+
+    public JMenu getMenuOpcoes() {
+        return menuOpcoes;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
-    private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JDesktopPane desktopPanel;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
+    private javax.swing.JMenu menuCadastros;
+    private javax.swing.JMenu menuFrequencia;
+    private javax.swing.JMenuItem menuItemBackup;
+    private javax.swing.JMenuItem menuItemLista;
+    private javax.swing.JMenuItem menuItemMusicos;
+    private javax.swing.JMenuItem menuItemSair;
+    private javax.swing.JMenuItem menuItemSobre;
+    private javax.swing.JMenuItem menuItemTocatas;
+    private javax.swing.JMenu menuOpcoes;
     // End of variables declaration//GEN-END:variables
 
 }
