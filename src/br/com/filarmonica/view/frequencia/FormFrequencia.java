@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.filarmonica.frequencia;
+package br.com.filarmonica.view.frequencia;
 
 /**
  *
@@ -111,6 +111,7 @@ public class FormFrequencia extends javax.swing.JInternalFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/list-accept.png"))); // NOI18N
         jButton1.setToolTipText("Finalizar lista");
         jButton1.setActionCommand("Finalizar");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
