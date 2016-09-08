@@ -12,7 +12,9 @@ package br.com.filarmonica.constants;
 public enum Constantes {
     
     Version("Versão", "1.0.0"),
-    DevelopedBy("Desenvolvido por", "Marcelo Augusto");
+    DevelopedBy("Desenvolvido por", "Marcelo Augusto"),
+    FormatDate("Formatted Date", "dd/MM/yyyy"),
+    FormatHour("Formatted Hour", "HH:mm");
     
     private String nome;
     private String valor;
