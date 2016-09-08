@@ -5,11 +5,10 @@
  */
 package br.com.filarmonica.main;
 
-import br.com.filarmonica.frequencia.FormFrequencia;
+import br.com.filarmonica.view.frequencia.FormFrequencia;
 import br.com.filarmonica.constants.Constantes;
 import br.com.filarmonica.view.musicos.FormMusicos;
 import br.com.filarmonica.view.tocatas.FormTocatas;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -56,7 +55,7 @@ public class FormPrincipalActionListener implements ActionListener {
                 break;
 
             case "Sobre":
-                JOptionPane.showMessageDialog(null, "Projeto desenvolvido para uso interno da Filarmônica Recreio Caicoense", Constantes.Version.getNome() + ": " +Constantes.Version.getValor(), JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Projeto desenvolvido para uso interno da Filarmônica Recreio Caicoense", Constantes.Version.getNome() + ": " + Constantes.Version.getValor(), JOptionPane.INFORMATION_MESSAGE);
                 break;
 
             case "Tocatas":
@@ -74,7 +73,7 @@ public class FormPrincipalActionListener implements ActionListener {
         formPrincipal.getMenuItemSobre().addActionListener(this);
         formPrincipal.getMenuItemSair().addActionListener(this);
     }
-    
+
     private void changeApplicationIcon() {
         URL url = this.formPrincipal.getClass().getResource("/br/com/filarmonica/images/icon-app.png");
         Image imageTitle = Toolkit.getDefaultToolkit().getImage(url);

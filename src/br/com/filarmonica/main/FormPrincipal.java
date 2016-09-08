@@ -45,7 +45,6 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerência de Músicos e Tocatas");
-        setPreferredSize(new java.awt.Dimension(982, 558));
 
         menuCadastros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/form-add.png"))); // NOI18N
         menuCadastros.setMnemonic('c');
@@ -130,12 +129,13 @@ public class FormPrincipal extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            javax.swing.UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
+            /*for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
-            }
+            }*/
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(FormPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -198,7 +198,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     public JMenu getMenuOpcoes() {
         return menuOpcoes;
     }
-    
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

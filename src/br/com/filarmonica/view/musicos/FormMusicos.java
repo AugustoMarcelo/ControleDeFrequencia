@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.filarmonica.view.musicos;
 
+import br.com.filarmonica.utilities.Now;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Marcelo Augusto
- */
 public class FormMusicos extends javax.swing.JInternalFrame {
 
     FormMusicosActionListener listener;
@@ -21,6 +13,22 @@ public class FormMusicos extends javax.swing.JInternalFrame {
     public FormMusicos() {
         initComponents();
         listener = new FormMusicosActionListener(this);
+    }
+
+    public JButton getButtonClear() {
+        return buttonClear;
+    }
+
+    public JButton getButtonDelete() {
+        return buttonDelete;
+    }
+
+    public JButton getButtonEdit() {
+        return buttonEdit;
+    }
+
+    public JButton getButtonSave() {
+        return buttonSave;
     }
 
     public JButton getButtonAdd() {
@@ -75,6 +83,14 @@ public class FormMusicos extends javax.swing.JInternalFrame {
         this.textFieldTelefone = textFieldTelefone;
     }
 
+    public JTextField getTextFieldEmail() {
+        return textFieldEmail;
+    }
+
+    public void setTextFieldEmail(JTextField textFieldEmail) {
+        this.textFieldEmail = textFieldEmail;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -99,12 +115,14 @@ public class FormMusicos extends javax.swing.JInternalFrame {
         textFieldAnoIngresso = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         textFieldTelefone = new javax.swing.JFormattedTextField();
+        jLabel11 = new javax.swing.JLabel();
+        textFieldEmail = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         buttonAdd = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        buttonEdit = new javax.swing.JButton();
+        buttonDelete = new javax.swing.JButton();
+        buttonSave = new javax.swing.JButton();
+        buttonClear = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -123,6 +141,8 @@ public class FormMusicos extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Nome:*");
 
+        textFieldNome.setEnabled(false);
+
         jLabel2.setText("ID:");
 
         textFieldId.setEditable(false);
@@ -130,14 +150,19 @@ public class FormMusicos extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Apelido:");
 
+        textFieldApelido.setEnabled(false);
+
         jLabel5.setForeground(new java.awt.Color(255, 0, 0));
         jLabel5.setText("* Campos obrigatórios");
 
         jLabel6.setText("Instrumento:*");
 
         comboInstrumentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Batuta", "Bombardino", "Clarinete", "Percussão", "Requinta", "Sax-alto", "Sax-tenor", "Trombone", "Trompa", "Trompete", "Tuba - Mib", "Tuba - Si" }));
+        comboInstrumentos.setEnabled(false);
 
         jLabel7.setText("Ano de Ingresso:");
+
+        textFieldAnoIngresso.setEnabled(false);
 
         jLabel10.setText("Telefone:");
 
@@ -146,6 +171,11 @@ public class FormMusicos extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        textFieldTelefone.setEnabled(false);
+
+        jLabel11.setText("E-mail:");
+
+        textFieldEmail.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -154,6 +184,7 @@ public class FormMusicos extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel11)
                     .addComponent(jLabel7)
                     .addComponent(jLabel6)
                     .addComponent(jLabel3)
@@ -168,12 +199,13 @@ public class FormMusicos extends javax.swing.JInternalFrame {
                         .addComponent(jLabel5))
                     .addComponent(textFieldNome)
                     .addComponent(textFieldApelido, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                    .addComponent(textFieldTelefone)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(textFieldAnoIngresso, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(comboInstrumentos, javax.swing.GroupLayout.Alignment.LEADING, 0, 134, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(textFieldTelefone))
+                    .addComponent(textFieldEmail))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -198,13 +230,17 @@ public class FormMusicos extends javax.swing.JInternalFrame {
                     .addComponent(textFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(textFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(comboInstrumentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(textFieldAnoIngresso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opções", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(51, 51, 255))); // NOI18N
@@ -212,22 +248,30 @@ public class FormMusicos extends javax.swing.JInternalFrame {
         buttonAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/add-user.png"))); // NOI18N
         buttonAdd.setToolTipText("Adicionar Músico");
         buttonAdd.setActionCommand("Adicionar");
+        buttonAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/edit-user.png"))); // NOI18N
-        jButton2.setToolTipText("Editar Músico");
-        jButton2.setActionCommand("Editar");
+        buttonEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/edit-user.png"))); // NOI18N
+        buttonEdit.setToolTipText("Editar Músico");
+        buttonEdit.setActionCommand("Editar");
+        buttonEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonEdit.setEnabled(false);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/remove-user.png"))); // NOI18N
-        jButton4.setToolTipText("Deletar Músico");
-        jButton4.setActionCommand("Deletar");
+        buttonDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/remove-user.png"))); // NOI18N
+        buttonDelete.setToolTipText("Deletar Músico");
+        buttonDelete.setActionCommand("Deletar");
+        buttonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonDelete.setEnabled(false);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/save.png"))); // NOI18N
-        jButton5.setToolTipText("Salvar Músico");
-        jButton5.setActionCommand("Salvar");
+        buttonSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/save.png"))); // NOI18N
+        buttonSave.setToolTipText("Salvar Músico");
+        buttonSave.setActionCommand("Salvar");
+        buttonSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonSave.setEnabled(false);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/clear.png"))); // NOI18N
-        jButton6.setToolTipText("Limpar campos");
-        jButton6.setActionCommand("Limpar");
+        buttonClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/clear.png"))); // NOI18N
+        buttonClear.setToolTipText("Limpar campos");
+        buttonClear.setActionCommand("Limpar");
+        buttonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -237,13 +281,13 @@ public class FormMusicos extends javax.swing.JInternalFrame {
                 .addGap(21, 21, 21)
                 .addComponent(buttonAdd)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(buttonEdit)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(buttonDelete)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(buttonSave)
                 .addGap(18, 18, 18)
-                .addComponent(jButton6)
+                .addComponent(buttonClear)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -252,10 +296,10 @@ public class FormMusicos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonAdd)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(buttonEdit)
+                    .addComponent(buttonDelete)
+                    .addComponent(buttonSave)
+                    .addComponent(buttonClear))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -292,7 +336,7 @@ public class FormMusicos extends javax.swing.JInternalFrame {
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel9)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(42, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,7 +374,7 @@ public class FormMusicos extends javax.swing.JInternalFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 1014, 392);
@@ -339,13 +383,14 @@ public class FormMusicos extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdd;
+    private javax.swing.JButton buttonClear;
+    private javax.swing.JButton buttonDelete;
+    private javax.swing.JButton buttonEdit;
+    private javax.swing.JButton buttonSave;
     private javax.swing.JComboBox<String> comboInstrumentos;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -362,6 +407,7 @@ public class FormMusicos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField textFieldAnoIngresso;
     private javax.swing.JTextField textFieldApelido;
+    private javax.swing.JTextField textFieldEmail;
     private javax.swing.JTextField textFieldId;
     private javax.swing.JTextField textFieldNome;
     private javax.swing.JFormattedTextField textFieldTelefone;
