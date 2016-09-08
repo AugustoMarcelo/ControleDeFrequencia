@@ -17,6 +17,7 @@ public class Musico {
     private String nome;
     private String apelido;
     private String telefone;
+    private String email;
     private String instrumento;
     private int anoIngresso;
 
@@ -24,10 +25,11 @@ public class Musico {
     
     }
 
-    public Musico(String nome, String apelido, String telefone, String instrumento, int anoIngresso) {
+    public Musico(String nome, String apelido, String telefone, String email, String instrumento, int anoIngresso) {
         this.nome = nome;
         this.apelido = apelido;
         this.telefone = telefone;
+        this.email = email;
         this.instrumento = instrumento;
         this.anoIngresso = anoIngresso;
     }
@@ -64,6 +66,14 @@ public class Musico {
         this.telefone = telefone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getInstrumento() {
         return instrumento;
     }
@@ -87,6 +97,7 @@ public class Musico {
         hash = 29 * hash + Objects.hashCode(this.nome);
         hash = 29 * hash + Objects.hashCode(this.apelido);
         hash = 29 * hash + Objects.hashCode(this.telefone);
+        hash = 29 * hash + Objects.hashCode(this.email);
         hash = 29 * hash + Objects.hashCode(this.instrumento);
         hash = 29 * hash + this.anoIngresso;
         return hash;
@@ -119,6 +130,9 @@ public class Musico {
         if (!Objects.equals(this.telefone, other.telefone)) {
             return false;
         }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
         if (!Objects.equals(this.instrumento, other.instrumento)) {
             return false;
         }
@@ -127,6 +141,6 @@ public class Musico {
 
     @Override
     public String toString() {
-        return "Músico \n{ " + "\n\t[nome] => " + nome + ", \n\t[apelido] => " + apelido + ", \n\t[telefone] => " + telefone + ", \n\t[instrumento] => " + instrumento + ", \n\t[anoIngresso] => " + anoIngresso + "\n}";
+        return "Músico \n{ " + "\n\t[nome] => " + nome + ", \n\t[apelido] => " + apelido + ", \n\t[telefone] => " + telefone + ", \n\t[e-mail] => " + email + ", \n\t[instrumento] => " + instrumento + ", \n\t[anoIngresso] => " + anoIngresso + "\n}";
     } 
 }
