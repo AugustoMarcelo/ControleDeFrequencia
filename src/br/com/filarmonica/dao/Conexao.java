@@ -20,7 +20,7 @@ public class Conexao {
         return instance;
     }
     
-    protected static Connection getConnection() {
+    public static Connection getConnection() {
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/filarmonica";
         String user = "root";
