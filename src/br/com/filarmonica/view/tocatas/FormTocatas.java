@@ -1,12 +1,20 @@
 package br.com.filarmonica.view.tocatas;
 
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 public class FormTocatas extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form FormTocatas
-     */
+    FormTocatasActionListener listener;
+    
     public FormTocatas() {
         initComponents();
+        listener = new FormTocatasActionListener(this);
     }
 
     /**
@@ -19,30 +27,32 @@ public class FormTocatas extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        formattedFieldData = new javax.swing.JFormattedTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel6 = new javax.swing.JLabel();
+        labelCamposObrigatorios = new javax.swing.JLabel();
+        labelId = new javax.swing.JLabel();
+        textFieldId = new javax.swing.JTextField();
+        labelLocal = new javax.swing.JLabel();
+        textFieldLocal = new javax.swing.JTextField();
+        labelData = new javax.swing.JLabel();
+        dateChooserData = new com.toedter.calendar.JDateChooser();
+        labelHora = new javax.swing.JLabel();
         formattedFieldHora = new javax.swing.JFormattedTextField();
+        labelComentarios = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textAreaComentarios = new javax.swing.JTextArea();
+        labelMaxText = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        labelPesquisa = new javax.swing.JLabel();
+        textFieldSearch = new javax.swing.JTextField();
+        labelIconeSearch = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableTocatas = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        buttonAdd = new javax.swing.JButton();
+        buttonEdit = new javax.swing.JButton();
+        buttonDelete = new javax.swing.JButton();
+        buttonSave = new javax.swing.JButton();
+        buttonCancel = new javax.swing.JButton();
+        buttonClear = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -53,103 +63,114 @@ public class FormTocatas extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informações", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(51, 51, 255))); // NOI18N
 
-        jLabel1.setText("ID:");
+        labelCamposObrigatorios.setForeground(new java.awt.Color(255, 0, 0));
+        labelCamposObrigatorios.setText("* Campos obrigatórios");
 
-        jTextField1.setEditable(false);
-        jTextField1.setEnabled(false);
+        labelId.setText("ID:");
 
-        jLabel2.setText("Local:*");
+        textFieldId.setEditable(false);
+        textFieldId.setEnabled(false);
 
-        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel3.setText("* Campos obrigatórios");
+        labelLocal.setText("Local:*");
 
-        jLabel4.setText("Data:*");
+        textFieldLocal.setEnabled(false);
 
-        try {
-            formattedFieldData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        labelData.setText("Data:*");
 
-        jLabel5.setText("Comentários:");
+        dateChooserData.setEnabled(false);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jLabel6.setText("Hora:");
+        labelHora.setText("Hora:");
 
         try {
             formattedFieldHora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        formattedFieldHora.setEnabled(false);
+
+        labelComentarios.setText("Comentários:");
+
+        textAreaComentarios.setColumns(20);
+        textAreaComentarios.setLineWrap(true);
+        textAreaComentarios.setRows(5);
+        textAreaComentarios.setToolTipText("");
+        textAreaComentarios.setWrapStyleWord(true);
+        textAreaComentarios.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        textAreaComentarios.setEnabled(false);
+        textAreaComentarios.setName(""); // NOI18N
+        jScrollPane1.setViewportView(textAreaComentarios);
+
+        labelMaxText.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        labelMaxText.setText("0/255");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(formattedFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(formattedFieldHora, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3))
-                    .addComponent(jTextField2))
-                .addContainerGap())
+                    .addComponent(labelMaxText, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(10, 10, 10))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jLabel5)
+                .addComponent(labelComentarios)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jScrollPane1)
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelHora, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelData, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelLocal, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelId, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textFieldLocal)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(dateChooserData, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textFieldId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(formattedFieldHora, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelCamposObrigatorios)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(labelId)
+                    .addComponent(textFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelCamposObrigatorios))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelLocal)
+                    .addComponent(textFieldLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelData)
+                    .addComponent(dateChooserData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(formattedFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(labelHora)
                     .addComponent(formattedFieldHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(labelComentarios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelMaxText))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tocatas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(51, 51, 255))); // NOI18N
 
-        jLabel8.setText("Digite para pesquisar:");
+        labelPesquisa.setText("Digite para pesquisar:");
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/search.png"))); // NOI18N
+        labelIconeSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/search.png"))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableTocatas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -160,7 +181,7 @@ public class FormTocatas extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tableTocatas);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -169,13 +190,13 @@ public class FormTocatas extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(labelPesquisa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField5)
+                        .addComponent(textFieldSearch)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)))
+                        .addComponent(labelIconeSearch)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -183,9 +204,9 @@ public class FormTocatas extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8))
-                    .addComponent(jLabel9))
+                        .addComponent(textFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelPesquisa))
+                    .addComponent(labelIconeSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
@@ -193,49 +214,57 @@ public class FormTocatas extends javax.swing.JInternalFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opções", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(51, 51, 255))); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/add.png"))); // NOI18N
-        jButton1.setToolTipText("Adicionar informações");
-        jButton1.setActionCommand("Editar");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/add.png"))); // NOI18N
+        buttonAdd.setToolTipText("Adicionar informações");
+        buttonAdd.setActionCommand("Adicionar");
+        buttonAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/edit.png"))); // NOI18N
-        jButton2.setToolTipText("Editar informações");
-        jButton2.setActionCommand("Editar");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setEnabled(false);
+        buttonEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/edit.png"))); // NOI18N
+        buttonEdit.setToolTipText("Editar informações");
+        buttonEdit.setActionCommand("Editar");
+        buttonEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonEdit.setEnabled(false);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/delete.png"))); // NOI18N
-        jButton3.setToolTipText("Deletar informações");
-        jButton3.setActionCommand("Deletar");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setEnabled(false);
+        buttonDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/delete.png"))); // NOI18N
+        buttonDelete.setToolTipText("Deletar informações");
+        buttonDelete.setActionCommand("Deletar");
+        buttonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonDelete.setEnabled(false);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/clear.png"))); // NOI18N
-        jButton4.setToolTipText("Limpar campos");
-        jButton4.setActionCommand("Limpar");
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/save.png"))); // NOI18N
+        buttonSave.setToolTipText("Salvar informações");
+        buttonSave.setActionCommand("Salvar");
+        buttonSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonSave.setEnabled(false);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/save.png"))); // NOI18N
-        jButton5.setToolTipText("Salvar informações");
-        jButton5.setActionCommand("Salvar");
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton5.setEnabled(false);
+        buttonCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/cancel.png"))); // NOI18N
+        buttonCancel.setToolTipText("Cancelar ação");
+        buttonCancel.setActionCommand("Cancelar");
+        buttonCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonCancel.setEnabled(false);
+
+        buttonClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/clear.png"))); // NOI18N
+        buttonClear.setToolTipText("Limpar campos");
+        buttonClear.setActionCommand("Limpar");
+        buttonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonAdd)
                 .addGap(1, 1, 1)
-                .addComponent(jButton2)
+                .addComponent(buttonEdit)
                 .addGap(1, 1, 1)
-                .addComponent(jButton3)
+                .addComponent(buttonDelete)
                 .addGap(1, 1, 1)
-                .addComponent(jButton5)
+                .addComponent(buttonSave)
                 .addGap(1, 1, 1)
-                .addComponent(jButton4)
+                .addComponent(buttonCancel)
+                .addGap(1, 1, 1)
+                .addComponent(buttonClear)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -243,11 +272,12 @@ public class FormTocatas extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(buttonAdd)
+                    .addComponent(buttonEdit)
+                    .addComponent(buttonDelete)
+                    .addComponent(buttonCancel)
+                    .addComponent(buttonSave)
+                    .addComponent(buttonClear))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -257,11 +287,11 @@ public class FormTocatas extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -274,38 +304,151 @@ public class FormTocatas extends javax.swing.JInternalFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 1014, 444);
     }// </editor-fold>//GEN-END:initComponents
 
+    public JButton getButtonAdd() {
+        return buttonAdd;
+    }
 
+    public void setButtonAdd(JButton buttonAdd) {
+        this.buttonAdd = buttonAdd;
+    }
+
+    public JButton getButtonCancel() {
+        return buttonCancel;
+    }
+
+    public void setButtonCancel(JButton buttonCancel) {
+        this.buttonCancel = buttonCancel;
+    }
+
+    public JButton getButtonClear() {
+        return buttonClear;
+    }
+
+    public void setButtonClear(JButton buttonClear) {
+        this.buttonClear = buttonClear;
+    }
+
+    public JButton getButtonDelete() {
+        return buttonDelete;
+    }
+
+    public void setButtonDelete(JButton buttonDelete) {
+        this.buttonDelete = buttonDelete;
+    }
+
+    public JButton getButtonEdit() {
+        return buttonEdit;
+    }
+
+    public void setButtonEdit(JButton buttonEdit) {
+        this.buttonEdit = buttonEdit;
+    }
+
+    public JButton getButtonSave() {
+        return buttonSave;
+    }
+
+    public void setButtonSave(JButton buttonSave) {
+        this.buttonSave = buttonSave;
+    }
+
+    public JDateChooser getDateChooserData() {
+        return dateChooserData;
+    }
+
+    public void setDateChooserData(JDateChooser dateChooserData) {
+        this.dateChooserData = dateChooserData;
+    }
+
+    public JFormattedTextField getFormattedFieldHora() {
+        return formattedFieldHora;
+    }
+
+    public void setFormattedFieldHora(JFormattedTextField formattedFieldHora) {
+        this.formattedFieldHora = formattedFieldHora;
+    }
+
+    public JTable getTableTocatas() {
+        return tableTocatas;
+    }
+
+    public void setTableTocatas(JTable tableTocatas) {
+        this.tableTocatas = tableTocatas;
+    }
+
+    public JTextArea getTextAreaComentarios() {
+        return textAreaComentarios;
+    }
+
+    public void setTextAreaComentarios(JTextArea textAreaComentarios) {
+        this.textAreaComentarios = textAreaComentarios;
+    }
+
+    public JTextField getTextFieldId() {
+        return textFieldId;
+    }
+
+    public void setTextFieldId(JTextField textFieldId) {
+        this.textFieldId = textFieldId;
+    }
+
+    public JTextField getTextFieldLocal() {
+        return textFieldLocal;
+    }
+
+    public void setTextFieldLocal(JTextField textFieldLocal) {
+        this.textFieldLocal = textFieldLocal;
+    }
+
+    public JTextField getTextFieldSearch() {
+        return textFieldSearch;
+    }
+
+    public void setTextFieldSearch(JTextField textFieldSearch) {
+        this.textFieldSearch = textFieldSearch;
+    }
+
+    public JLabel getLabelMaxText() {
+        return labelMaxText;
+    }
+
+    public void setLabelMaxText(JLabel labelMaxText) {
+        this.labelMaxText = labelMaxText;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField formattedFieldData;
+    private javax.swing.JButton buttonAdd;
+    private javax.swing.JButton buttonCancel;
+    private javax.swing.JButton buttonClear;
+    private javax.swing.JButton buttonDelete;
+    private javax.swing.JButton buttonEdit;
+    private javax.swing.JButton buttonSave;
+    private com.toedter.calendar.JDateChooser dateChooserData;
     private javax.swing.JFormattedTextField formattedFieldHora;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JLabel labelCamposObrigatorios;
+    private javax.swing.JLabel labelComentarios;
+    private javax.swing.JLabel labelData;
+    private javax.swing.JLabel labelHora;
+    private javax.swing.JLabel labelIconeSearch;
+    private javax.swing.JLabel labelId;
+    private javax.swing.JLabel labelLocal;
+    private javax.swing.JLabel labelMaxText;
+    private javax.swing.JLabel labelPesquisa;
+    private javax.swing.JTable tableTocatas;
+    private javax.swing.JTextArea textAreaComentarios;
+    private javax.swing.JTextField textFieldId;
+    private javax.swing.JTextField textFieldLocal;
+    private javax.swing.JTextField textFieldSearch;
     // End of variables declaration//GEN-END:variables
 }
