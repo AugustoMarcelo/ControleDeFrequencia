@@ -6,6 +6,7 @@
 package br.com.filarmonica.main;
 
 import javax.swing.JDesktopPane;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
@@ -32,6 +33,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPanel = new javax.swing.JDesktopPane();
+        labelConexao = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menuCadastros = new javax.swing.JMenu();
         menuItemMusicos = new javax.swing.JMenuItem();
@@ -45,6 +47,13 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerência de Músicos e Tocatas");
+
+        labelConexao.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        labelConexao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelConexao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/database-disconnect.png"))); // NOI18N
+        labelConexao.setText("Sem conexão");
+        desktopPanel.add(labelConexao);
+        labelConexao.setBounds(890, 530, 120, 20);
 
         menuCadastros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/form-add.png"))); // NOI18N
         menuCadastros.setMnemonic('c');
@@ -108,14 +117,14 @@ public class FormPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
+            .addComponent(desktopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1015, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
+            .addComponent(desktopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1031, 597));
+        setSize(new java.awt.Dimension(1031, 618));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -155,6 +164,14 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
     }
 
+    public JLabel getLabelConexao() {
+        return labelConexao;
+    }
+
+    public void setLabelConexao(JLabel labelConexao) {
+        this.labelConexao = labelConexao;
+    }
+    
     public JDesktopPane getDesktopPanel() {
         return desktopPanel;
     }
@@ -203,6 +220,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPanel;
+    private javax.swing.JLabel labelConexao;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuCadastros;
     private javax.swing.JMenu menuFrequencia;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.filarmonica.main;
 
 import br.com.filarmonica.view.frequencia.FormFrequencia;
@@ -16,18 +11,17 @@ import java.awt.event.ActionListener;
 import java.net.URL;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Marcelo Augusto
- */
 public class FormPrincipalActionListener implements ActionListener {
 
     private FormPrincipal formPrincipal;
-
+    private PrincipalService service;
+    
     public FormPrincipalActionListener(FormPrincipal formPrincipal) {
         this.formPrincipal = formPrincipal;
+        service = new PrincipalService();
         addListener();
         changeApplicationIcon();
+        checkConnection();
     }
 
     @Override
@@ -78,5 +72,12 @@ public class FormPrincipalActionListener implements ActionListener {
         URL url = this.formPrincipal.getClass().getResource("/br/com/filarmonica/images/icon-app.png");
         Image imageTitle = Toolkit.getDefaultToolkit().getImage(url);
         this.formPrincipal.setIconImage(imageTitle);
+    }
+    
+    public void checkConnection() {
+        if(service.checkConnection() != null) {
+            formPrincipal.getLabelConexao().setText("Conectado");
+            formPrincipal.getLabelConexao().setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/database-connect.png")));
+        }
     }
 }
