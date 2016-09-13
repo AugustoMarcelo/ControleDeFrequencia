@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.filarmonica.models;
 
 import java.util.Objects;
 
-/**
- *
- * @author Marcelo Augusto
- */
 public class Musico {
     
     private int id;
@@ -142,5 +133,5 @@ public class Musico {
     @Override
     public String toString() {
         return "Músico \n{ " + "\n\t[nome] => " + nome + ", \n\t[apelido] => " + apelido + ", \n\t[telefone] => " + telefone + ", \n\t[e-mail] => " + email + ", \n\t[instrumento] => " + instrumento + ", \n\t[anoIngresso] => " + anoIngresso + "\n}";
-    } 
+    }
 }

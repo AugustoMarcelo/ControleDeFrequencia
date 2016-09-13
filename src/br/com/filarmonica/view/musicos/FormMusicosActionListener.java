@@ -2,19 +2,29 @@ package br.com.filarmonica.view.musicos;
 
 import br.com.filarmonica.models.Musico;
 import br.com.filarmonica.services.MusicoService;
+import br.com.filarmonica.utilities.ShowMessage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.List;
+import javax.swing.SwingConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumn;
 
-public class FormMusicosActionListener implements ActionListener {
+public class FormMusicosActionListener implements ActionListener, ListSelectionListener {
 
     FormMusicos formMusicos;
     MusicoService service;
+    MusicosTableModel tableModel;
 
     public FormMusicosActionListener(FormMusicos formMusicos) {
         this.formMusicos = formMusicos;
         service = new MusicoService();
         addListener();
+        startTable();
     }
 
     @Override
@@ -22,26 +32,59 @@ public class FormMusicosActionListener implements ActionListener {
 
         switch (event.getActionCommand()) {
             case "Adicionar":
-                enableOrDisableFields(true);
+                enableFields(true);
                 enableToSave();
                 break;
+            case "Cancelar":
+                enableToNew();
+                enableFields(false);
+                clearFields();
+                break;
+            case "Deletar":
+                boolean value = ShowMessage.question("Deseja deletar este músico?");
+                if (value) {
+                    if (delete(formToModel().getId())) {
+                        ShowMessage.msgSuccess("Músico deletado com sucesso.");
+                        startTable();
+                        enableToNew();
+                        enableFields(false);
+                        clearFields();
+                        break;
+                    }
+                }
+                break;
+            case "Editar":
+                if (checkInputFields()) {
+                    if (save()) {
+                        ShowMessage.msgSuccess("Músico editado com sucesso.");
+                        clearFields();
+                        enableFields(false);
+                        enableToNew();
+                        startTable();
+                        break;
+                    } else {
+                        ShowMessage.msgError("Erro ao salvar músico.");
+                        break;
+                    }
+                }
             case "Limpar":
                 clearFields();
                 break;
             case "Salvar":
                 if (checkInputFields()) {
                     if (save()) {
-                        JOptionPane.showMessageDialog(null, "Músico salvo com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                        ShowMessage.msgSuccess("Músico salvo com sucesso.");
                         clearFields();
-                        enableOrDisableFields(false);
+                        enableFields(false);
                         enableToNew();
+                        startTable();
                         break;
                     } else {
-                        JOptionPane.showMessageDialog(null, "Erro ao salvar músico.", "Erro", JOptionPane.ERROR_MESSAGE);
+                        ShowMessage.msgError("Erro ao salvar músico.");
                         break;
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Preencha os campos obrigatórios.", "Atenção", JOptionPane.WARNING_MESSAGE);
+                    ShowMessage.msgWarning("Preencha os campos obrigatórios.");
                     break;
                 }
 
@@ -50,7 +93,27 @@ public class FormMusicosActionListener implements ActionListener {
 
     public void addListener() {
         formMusicos.getButtonAdd().addActionListener(this);
+        formMusicos.getButtonClear().addActionListener(this);
+        formMusicos.getButtonDelete().addActionListener(this);
+        formMusicos.getButtonEdit().addActionListener(this);
         formMusicos.getButtonSave().addActionListener(this);
+        formMusicos.getButtonCancel().addActionListener(this);
+        formMusicos.getTextFieldSearch().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                startTable(formMusicos.getTextFieldSearch().getText());
+            }
+        });
     }
 
     public boolean checkInputFields() {
@@ -70,7 +133,11 @@ public class FormMusicosActionListener implements ActionListener {
         formMusicos.getComboInstrumentos().setSelectedIndex(0);
     }
 
-    public void enableOrDisableFields(boolean valor) {
+    public boolean delete(int id) {
+        return service.delete(id);
+    }
+
+    public void enableFields(boolean valor) {
         formMusicos.getTextFieldNome().setEnabled(valor);
         formMusicos.getTextFieldApelido().setEnabled(valor);
         formMusicos.getTextFieldAnoIngresso().setEnabled(valor);
@@ -84,6 +151,7 @@ public class FormMusicosActionListener implements ActionListener {
         formMusicos.getButtonSave().setEnabled(false);
         formMusicos.getButtonEdit().setEnabled(true);
         formMusicos.getButtonDelete().setEnabled(true);
+        formMusicos.getButtonCancel().setEnabled(true);
     }
 
     public void enableToNew() {
@@ -91,6 +159,7 @@ public class FormMusicosActionListener implements ActionListener {
         formMusicos.getButtonSave().setEnabled(false);
         formMusicos.getButtonEdit().setEnabled(false);
         formMusicos.getButtonDelete().setEnabled(false);
+        formMusicos.getButtonCancel().setEnabled(false);
     }
 
     public void enableToSave() {
@@ -98,6 +167,7 @@ public class FormMusicosActionListener implements ActionListener {
         formMusicos.getButtonSave().setEnabled(true);
         formMusicos.getButtonEdit().setEnabled(false);
         formMusicos.getButtonDelete().setEnabled(false);
+        formMusicos.getButtonCancel().setEnabled(true);
     }
 
     public Musico formToModel() {
@@ -113,8 +183,66 @@ public class FormMusicosActionListener implements ActionListener {
         musico.setAnoIngresso(Integer.parseInt(formMusicos.getTextFieldAnoIngresso().getText()));
         return musico;
     }
-    
+
+    public void modelToForm(Musico m) {
+        formMusicos.getTextFieldId().setText(String.valueOf(m.getId()));
+        formMusicos.getTextFieldNome().setText(m.getNome());
+        formMusicos.getTextFieldApelido().setText(m.getApelido());
+        formMusicos.getTextFieldTelefone().setText(m.getTelefone());
+        formMusicos.getTextFieldEmail().setText(m.getEmail());
+        formMusicos.getComboInstrumentos().setSelectedItem(m.getInstrumento());
+        formMusicos.getTextFieldAnoIngresso().setText(String.valueOf(m.getAnoIngresso()));
+    }
+
     public boolean save() {
         return service.save(formToModel());
+    }
+
+    public void startTable() {
+        List<Musico> musicos = service.listMusicos();
+        if (musicos != null) {
+            tableModel = new MusicosTableModel(musicos);
+            formMusicos.getTableMusicos().setModel(tableModel);
+            formMusicos.getTableMusicos().getSelectionModel().addListSelectionListener(this);
+            /*--- SETANDO A LARGURA DAS COLUNAS-----*/
+            formMusicos.getTableMusicos().getColumnModel().getColumn(0).setPreferredWidth(5);
+            formMusicos.getTableMusicos().getColumnModel().getColumn(1).setPreferredWidth(210);
+            formMusicos.getTableMusicos().getColumnModel().getColumn(2).setPreferredWidth(20);
+            /*--- ALINHANDO AS CÉLULAS AO CENTRO ----*/
+            AlignCell(formMusicos.getTableMusicos().getColumnModel().getColumn(0), SwingConstants.CENTER);
+            AlignCell(formMusicos.getTableMusicos().getColumnModel().getColumn(1), SwingConstants.CENTER);
+            AlignCell(formMusicos.getTableMusicos().getColumnModel().getColumn(2), SwingConstants.CENTER);
+        }
+    }
+
+    public void startTable(String nomeMusico) {
+        List<Musico> musicos = service.search(nomeMusico);
+        tableModel = new MusicosTableModel(musicos);
+        formMusicos.getTableMusicos().setModel(tableModel);
+        formMusicos.getTableMusicos().getSelectionModel().addListSelectionListener(this);
+        /*--- SETANDO A LARGURA DAS COLUNAS-----*/
+        formMusicos.getTableMusicos().getColumnModel().getColumn(0).setPreferredWidth(5);
+        formMusicos.getTableMusicos().getColumnModel().getColumn(1).setPreferredWidth(210);
+        formMusicos.getTableMusicos().getColumnModel().getColumn(2).setPreferredWidth(20);
+        /*--- ALINHANDO AS CÉLULAS AO CENTRO ----*/
+        AlignCell(formMusicos.getTableMusicos().getColumnModel().getColumn(0), SwingConstants.CENTER);
+        AlignCell(formMusicos.getTableMusicos().getColumnModel().getColumn(1), SwingConstants.CENTER);
+        AlignCell(formMusicos.getTableMusicos().getColumnModel().getColumn(2), SwingConstants.CENTER);
+    }
+
+    public void AlignCell(TableColumn column, int align) {
+        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
+        center.setHorizontalAlignment(align);
+        column.setCellRenderer(center);
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        if (formMusicos.getTableMusicos().getSelectedRow() >= 0) {
+            Musico m = tableModel.getMusicos().get(formMusicos.getTableMusicos().getSelectedRow());
+            modelToForm(m);
+            enableFields(true);
+            enableToEdit();
+        }
     }
 }
