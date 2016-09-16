@@ -39,12 +39,52 @@ public class FormFrequencia extends javax.swing.JInternalFrame {
         this.radioButtonPresenca = radioButtonPresenca;
     }
 
+    public JButton getButtonRemove() {
+        return buttonRemove;
+    }
+
+    public void setButtonRemove(JButton buttonRemove) {
+        this.buttonRemove = buttonRemove;
+    }
+
+    public JButton getButtonCancelar() {
+        return buttonCancelar;
+    }
+
+    public void setButtonCancelar(JButton buttonCancelar) {
+        this.buttonCancelar = buttonCancelar;
+    }
+
     public JButton getButtonReleaseCombo() {
         return buttonReleaseCombo;
     }
 
     public void setButtonReleaseCombo(JButton buttonReleaseCombo) {
         this.buttonReleaseCombo = buttonReleaseCombo;
+    }
+
+    public JButton getButtonExportToPDF() {
+        return buttonExportToPDF;
+    }
+
+    public void setButtonExportToPDF(JButton buttonExportToPDF) {
+        this.buttonExportToPDF = buttonExportToPDF;
+    }
+
+    public JButton getButtonEditar() {
+        return buttonEditar;
+    }
+
+    public void setButtonEditar(JButton buttonEditar) {
+        this.buttonEditar = buttonEditar;
+    }
+
+    public JButton getButtonDelete() {
+        return buttonDelete;
+    }
+
+    public void setButtonDelete(JButton buttonDelete) {
+        this.buttonDelete = buttonDelete;
     }
 
     public JButton getButtonAddTo() {
@@ -115,6 +155,11 @@ public class FormFrequencia extends javax.swing.JInternalFrame {
         tableFrequencia = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         buttonFinalizar = new javax.swing.JButton();
+        buttonEditar = new javax.swing.JButton();
+        buttonDelete = new javax.swing.JButton();
+        buttonExportToPDF = new javax.swing.JButton();
+        buttonRemove = new javax.swing.JButton();
+        buttonCancelar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         labelValueFaults = new javax.swing.JLabel();
 
@@ -238,7 +283,7 @@ public class FormFrequencia extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,6 +297,36 @@ public class FormFrequencia extends javax.swing.JInternalFrame {
         buttonFinalizar.setActionCommand("Finalizar");
         buttonFinalizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        buttonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/list-edit.png"))); // NOI18N
+        buttonEditar.setToolTipText("Editar frequência");
+        buttonEditar.setActionCommand("Editar");
+        buttonEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonEditar.setEnabled(false);
+
+        buttonDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/list-delete.png"))); // NOI18N
+        buttonDelete.setToolTipText("Apagar frequência");
+        buttonDelete.setActionCommand("Deletar");
+        buttonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonDelete.setEnabled(false);
+
+        buttonExportToPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/pdf_2.png"))); // NOI18N
+        buttonExportToPDF.setToolTipText("Exportar para .PDF");
+        buttonExportToPDF.setActionCommand("PDF");
+        buttonExportToPDF.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonExportToPDF.setEnabled(false);
+
+        buttonRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/delete.png"))); // NOI18N
+        buttonRemove.setToolTipText("Retirar um componente da frequência");
+        buttonRemove.setActionCommand("Remove");
+        buttonRemove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonRemove.setEnabled(false);
+
+        buttonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/cancel.png"))); // NOI18N
+        buttonCancelar.setToolTipText("Remover seleção");
+        buttonCancelar.setActionCommand("Cancelar");
+        buttonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonCancelar.setEnabled(false);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -259,11 +334,26 @@ public class FormFrequencia extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(buttonFinalizar)
-                .addContainerGap(351, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonEditar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonExportToPDF)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonCancelar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonRemove)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonDelete)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(buttonFinalizar)
+            .addComponent(buttonEditar)
+            .addComponent(buttonDelete)
+            .addComponent(buttonExportToPDF)
+            .addComponent(buttonRemove)
+            .addComponent(buttonCancelar)
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Valor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(51, 51, 255))); // NOI18N
@@ -316,15 +406,20 @@ public class FormFrequencia extends javax.swing.JInternalFrame {
                 .addGap(48, 48, 48))
         );
 
-        setBounds(0, 0, 600, 546);
+        setBounds(0, 0, 605, 546);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAddTo;
+    private javax.swing.JButton buttonCancelar;
+    private javax.swing.JButton buttonDelete;
+    private javax.swing.JButton buttonEditar;
+    private javax.swing.JButton buttonExportToPDF;
     private javax.swing.JButton buttonFinalizar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton buttonReleaseCombo;
+    private javax.swing.JButton buttonRemove;
     private javax.swing.JComboBox<String> comboMusicos;
     private javax.swing.JComboBox<String> comboTocatas;
     private javax.swing.JButton jButton1;
