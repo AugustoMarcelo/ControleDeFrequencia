@@ -14,5 +14,7 @@ A aplicação será desenvolvida com Java SE, interface gráfica com biblioteca 
 
 # Futuras implementações
   ► Migração para dispositivos móveis (e/ou interface web), possibilitando ao músico ver suas faltas e dívidas
+
   ► Implementar o backup dos dados
+
   ► Implementar a verificação de dados não salvos, para o caso de o usuário fechar uma página sem salvá-los
