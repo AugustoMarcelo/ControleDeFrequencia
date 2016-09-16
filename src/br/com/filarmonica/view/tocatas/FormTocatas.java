@@ -219,7 +219,7 @@ public class FormTocatas extends javax.swing.JInternalFrame {
         buttonAdd.setActionCommand("Adicionar");
         buttonAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        buttonEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/edit.png"))); // NOI18N
+        buttonEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/list-edit.png"))); // NOI18N
         buttonEdit.setToolTipText("Editar informações");
         buttonEdit.setActionCommand("Editar");
         buttonEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

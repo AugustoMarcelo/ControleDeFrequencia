@@ -386,7 +386,7 @@
         <Component class="javax.swing.JButton" name="buttonEdit">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/br/com/filarmonica/images/edit.png"/>
+              <Image iconType="3" name="/br/com/filarmonica/images/list-edit.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Editar informa&#xe7;&#xf5;es"/>
             <Property name="actionCommand" type="java.lang.String" value="Editar"/>
