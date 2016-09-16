@@ -95,6 +95,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         menuItemBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/text-file.png"))); // NOI18N
         menuItemBackup.setMnemonic('b');
         menuItemBackup.setText("Backup (.txt)");
+        menuItemBackup.setEnabled(false);
         menuOpcoes.add(menuItemBackup);
 
         menuItemSobre.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
