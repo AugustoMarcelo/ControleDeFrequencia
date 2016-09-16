@@ -13,4 +13,6 @@ A aplicação será desenvolvida com Java SE, interface gráfica com biblioteca 
   ► Permitir backup dos dados sempre que o usuário sair do sistema
 
 # Futuras implementações
-  ► Migração para dispositivos móveis (e/ou interface web), possibilitando ao músico ver suas faltas e dividas
+  ► Migração para dispositivos móveis (e/ou interface web), possibilitando ao músico ver suas faltas e dívidas
+  ► Implementar o backup dos dados
+  ► Implementar a verificação de dados não salvos, para o caso de o usuário fechar uma página sem salvá-los
