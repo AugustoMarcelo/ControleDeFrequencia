@@ -1,5 +1,6 @@
 package br.com.filarmonica.utilities;
 
+import br.com.filarmonica.constants.Constantes;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -26,5 +27,18 @@ public class ShowMessage extends JOptionPane{
 
     public static void msgWarning(String msg) {
         showMessageDialog(null, msg, "Atenção", WARNING_MESSAGE);
+    }
+    
+    public static boolean questionDialog(String msg) {
+        if(question(msg)) {
+            String answer = showInputDialog(null, "Digite o seguinte texto para confirmar sua ação (SEM AS ASPAS):\n\n"+"\""+Constantes.ConfirmText.getValor()+"\"", Constantes.ConfirmText.getNome(), INFORMATION_MESSAGE);
+            if(answer != null) {
+                if(answer.equals(Constantes.ConfirmText.getValor())) {
+                    return true;
+                }
+                msgError("O texto digitado não confere.");
+            }
+        }
+        return false;
     }
 }
