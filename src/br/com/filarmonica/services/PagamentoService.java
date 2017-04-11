@@ -13,10 +13,12 @@ public class PagamentoService {
     
     private PagamentoDAO pagamentoDAO;
     private MusicoService mService;
+    private FrequenciaService fService;
     
     public PagamentoService() {
         pagamentoDAO = new PagamentoDAO();
         mService = new MusicoService();
+        fService = new FrequenciaService();
     }
     
     public boolean save(Pagamento p) {
@@ -33,5 +35,17 @@ public class PagamentoService {
     
     public List<Pagamento> listPagamentos(int idMusico) {
         return pagamentoDAO.listPagamentos(idMusico);
+    }
+    
+    public Double listValoresRecebidos() {
+        return pagamentoDAO.listValoresRecebidos();
+    }
+    
+    public Double listAreceber(int idMusico) {
+        return fService.aReceber(idMusico);
+    }
+    
+    public Double listAreceber() {
+        return fService.aReceber();
     }
 }
