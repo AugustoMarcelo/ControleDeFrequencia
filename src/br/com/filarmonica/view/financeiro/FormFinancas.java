@@ -28,6 +28,22 @@ public class FormFinancas extends javax.swing.JInternalFrame {
         this.labelDividaMusico = labelDividaMusico;
     }
 
+    public JLabel getLabelTotalReceber() {
+        return labelTotalReceber;
+    }
+
+    public void setLabelTotalReceber(JLabel labelTotalReceber) {
+        this.labelTotalReceber = labelTotalReceber;
+    }
+
+    public JLabel getLabelTotalCaixa() {
+        return labelTotalCaixa;
+    }
+
+    public void setLabelTotalCaixa(JLabel labelTotalCaixa) {
+        this.labelTotalCaixa = labelTotalCaixa;
+    }
+    
     public JPanel getPanelDividaMusico() {
         return panelDividaMusico;
     }
@@ -102,12 +118,10 @@ public class FormFinancas extends javax.swing.JInternalFrame {
         buttonGerarPDF = new javax.swing.JButton();
         panelDividaMusico = new javax.swing.JPanel();
         labelDividaMusico = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        panelTotalCaixa = new javax.swing.JPanel();
         labelTotalCaixa = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        panelTotalReceber = new javax.swing.JPanel();
+        labelTotalReceber = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -170,7 +184,7 @@ public class FormFinancas extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                 .addGap(2, 2, 2))
         );
 
@@ -190,6 +204,7 @@ public class FormFinancas extends javax.swing.JInternalFrame {
 
         labelDividaMusico.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelDividaMusico.setText("R$ 0,00");
+        labelDividaMusico.setToolTipText("Caso o valor seja negativo, o músico estará com crédito.");
 
         javax.swing.GroupLayout panelDividaMusicoLayout = new javax.swing.GroupLayout(panelDividaMusico);
         panelDividaMusico.setLayout(panelDividaMusicoLayout);
@@ -208,55 +223,50 @@ public class FormFinancas extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Total em Caixa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(51, 51, 255))); // NOI18N
+        panelTotalCaixa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Total em Caixa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(51, 51, 255))); // NOI18N
 
         labelTotalCaixa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelTotalCaixa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/register.png"))); // NOI18N
         labelTotalCaixa.setText("R$ 0,00");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelTotalCaixaLayout = new javax.swing.GroupLayout(panelTotalCaixa);
+        panelTotalCaixa.setLayout(panelTotalCaixaLayout);
+        panelTotalCaixaLayout.setHorizontalGroup(
+            panelTotalCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTotalCaixaLayout.createSequentialGroup()
                 .addContainerGap(71, Short.MAX_VALUE)
                 .addComponent(labelTotalCaixa)
                 .addGap(56, 56, 56))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        panelTotalCaixaLayout.setVerticalGroup(
+            panelTotalCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTotalCaixaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelTotalCaixa)
                 .addContainerGap())
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Total a receber", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(51, 51, 255))); // NOI18N
+        panelTotalReceber.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Total a receber", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(51, 51, 255))); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("R$ 0,00");
+        labelTotalReceber.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelTotalReceber.setText("R$ 0,00");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelTotalReceberLayout = new javax.swing.GroupLayout(panelTotalReceber);
+        panelTotalReceber.setLayout(panelTotalReceberLayout);
+        panelTotalReceberLayout.setHorizontalGroup(
+            panelTotalReceberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTotalReceberLayout.createSequentialGroup()
                 .addGap(72, 72, 72)
-                .addComponent(jLabel3)
+                .addComponent(labelTotalReceber)
                 .addContainerGap(75, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        panelTotalReceberLayout.setVerticalGroup(
+            panelTotalReceberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTotalReceberLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addComponent(labelTotalReceber)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jLabel2.setText("Desenvolvido por Marcelo Augusto");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
-        jLabel4.setText("Versão 2.0.0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -266,9 +276,7 @@ public class FormFinancas extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelDividaMusico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -287,27 +295,22 @@ public class FormFinancas extends javax.swing.JInternalFrame {
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelTotalReceber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(panelTotalCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(buttonAddPagamento, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(buttonGerarPDF, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(labelPesquisa)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(textFieldPesquisarMusico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonAddPagamento, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buttonGerarPDF, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(labelPesquisa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(textFieldPesquisarMusico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -315,8 +318,8 @@ public class FormFinancas extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelDividaMusico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelTotalCaixa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelTotalReceber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(13, 13, 13))
         );
 
@@ -327,19 +330,17 @@ public class FormFinancas extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAddPagamento;
     private javax.swing.JButton buttonGerarPDF;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelDividaMusico;
     private javax.swing.JLabel labelPesquisa;
     private javax.swing.JLabel labelTotalCaixa;
+    private javax.swing.JLabel labelTotalReceber;
     private javax.swing.JPanel panelDividaMusico;
+    private javax.swing.JPanel panelTotalCaixa;
+    private javax.swing.JPanel panelTotalReceber;
     private javax.swing.JTable tableDebitos;
     private javax.swing.JTable tableMusicos;
     private javax.swing.JTextField textFieldPesquisarMusico;

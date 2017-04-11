@@ -30,8 +30,6 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="panelDividaMusico" max="32767" attributes="0"/>
                   <Component id="jPanel1" min="-2" pref="264" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="0" min="-2" pref="62" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -57,9 +55,9 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelTotalReceber" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelTotalCaixa" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -70,20 +68,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="buttonAddPagamento" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="buttonGerarPDF" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="labelPesquisa" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="textFieldPesquisarMusico" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="buttonAddPagamento" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonGerarPDF" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="labelPesquisa" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="textFieldPesquisarMusico" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -94,8 +85,8 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="panelDividaMusico" max="32767" attributes="0"/>
-                  <Component id="jPanel4" max="32767" attributes="0"/>
-                  <Component id="jPanel5" max="32767" attributes="0"/>
+                  <Component id="panelTotalCaixa" max="32767" attributes="0"/>
+                  <Component id="panelTotalReceber" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
           </Group>
@@ -178,7 +169,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jScrollPane2" pref="245" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" pref="249" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -267,11 +258,12 @@
               <Font name="Tahoma" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="R$ 0,00"/>
+            <Property name="toolTipText" type="java.lang.String" value="Caso o valor seja negativo, o m&#xfa;sico estar&#xe1; com cr&#xe9;dito."/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel4">
+    <Container class="javax.swing.JPanel" name="panelTotalCaixa">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -316,7 +308,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel5">
+    <Container class="javax.swing.JPanel" name="panelTotalReceber">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -332,7 +324,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelTotalReceber" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="75" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -341,14 +333,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelTotalReceber" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="labelTotalReceber">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="1"/>
@@ -358,18 +350,5 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Desenvolvido por Marcelo Augusto"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="10" style="2"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Vers&#xe3;o 2.0.0"/>
-      </Properties>
-    </Component>
   </SubComponents>
 </Form>
