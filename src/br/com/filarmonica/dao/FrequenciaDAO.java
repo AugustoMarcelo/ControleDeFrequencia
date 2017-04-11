@@ -220,4 +220,35 @@ public class FrequenciaDAO {
             return false;
         }
     }
+    
+    public Double aReceber(int idMusico) {
+        String sql = "SELECT COUNT(*) total_faltas FROM frequencia WHERE id_musico = ? AND presenca = 0";
+        Double valor = .0d;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, idMusico);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                valor+= rs.getInt("total_faltas") * 10.0d;
+            }
+            return valor;
+        } catch (SQLException e) {
+            return null;
+        }
+    }
+    
+    public Double aReceber() {
+        String sql = "SELECT COUNT(*) total_faltas FROM frequencia WHERE presenca = 0";
+        Double valor = .0d;
+        try {
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                valor+= rs.getInt("total_faltas") * 10.0d;
+            }
+            return valor;
+        } catch (SQLException e) {
+            return null;
+        }
+    }
 }
