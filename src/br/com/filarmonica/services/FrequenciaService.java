@@ -45,4 +45,12 @@ public class FrequenciaService {
     public boolean delete(Frequencia frequencia) {
         return frequenciaDao.delete(frequencia);
     }
+    
+    public Double aReceber(int idMusico) {
+        return frequenciaDao.aReceber(idMusico);
+    }
+    
+    public Double aReceber() {
+        return frequenciaDao.aReceber();
+    }
 }
