@@ -9,8 +9,10 @@ A aplicação será desenvolvida com Java SE, interface gráfica com biblioteca 
   ► Cadastro das tocatas
   
   ► Lista de frequência dos músicos para cada tocata
+    - Também é possível a geração de PDFs
+
+  ► Módulo de gerência financeira básico
   
-  ► Permitir backup dos dados sempre que o usuário sair do sistema
 
 # Futuras implementações
   ► Migração para dispositivos móveis (e/ou interface web), possibilitando ao músico ver suas faltas e dívidas
