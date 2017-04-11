@@ -6,10 +6,13 @@ import br.com.filarmonica.services.MusicoService;
 import br.com.filarmonica.services.PagamentoService;
 import br.com.filarmonica.utilities.AlignCell;
 import br.com.filarmonica.view.musicos.MusicosTableModel;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.BorderFactory;
+import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -30,6 +33,8 @@ public class FormFinancasActionListener implements ActionListener, ListSelection
         this.formFinancas = formFinancas;
         musicosService = new MusicoService();
         pService = new PagamentoService();
+        setEmCaixa();
+        setAReceber();
         startTableMusicos();
         startTablePagamentos();
         addListener();
@@ -91,11 +96,21 @@ public class FormFinancasActionListener implements ActionListener, ListSelection
             enableButtons(true);
             Musico m = musicosTableModel.getMusicos().get(formFinancas.getTableMusicos().getSelectedRow());
             List<Pagamento> pagamentos = pService.listPagamentos(m.getId());
+            Double valor = .0d;
             for (Pagamento p : pagamentos) {
                 p.setMusico(m);
+                valor += p.getValor();
             }
             startTablePagamentos(pagamentos);
-            formFinancas.getPanelDividaMusico().setBorder(BorderFactory.createTitledBorder("À receber de "+m.getNome()));
+            setAReceberMusico(valor);
+            formFinancas.getPanelDividaMusico().
+                    setBorder(BorderFactory.createTitledBorder(
+                            BorderFactory.createEtchedBorder(), 
+                            "À receber de "+m.getNome(),
+                            TitledBorder.DEFAULT_JUSTIFICATION,
+                            TitledBorder.DEFAULT_POSITION,
+                            new Font("Tahoma", Font.PLAIN, 11),
+                            new Color(51,51,255)));
         }
     }
     
@@ -112,4 +127,17 @@ public class FormFinancasActionListener implements ActionListener, ListSelection
         return m;
     }
     
+    private void setEmCaixa() {
+        formFinancas.getLabelTotalCaixa().setText("R$ "+pService.listValoresRecebidos().toString().replace(".", ","));
+    }
+    
+    private void setAReceberMusico(Double valor) {
+        valor = pService.listAreceber(formToModel().getId()) - valor;
+        formFinancas.getLabelDividaMusico().setText("R$ "+valor.toString().replace(".", ","));
+    }
+    
+    private void setAReceber() {
+        Double aReceber = pService.listAreceber() - pService.listValoresRecebidos();
+        formFinancas.getLabelTotalReceber().setText("R$ "+aReceber.toString().replace(".", ","));
+    }
 }
