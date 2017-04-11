@@ -1,9 +1,11 @@
 package br.com.filarmonica.dao;
 
 import br.com.filarmonica.models.Musico;
+import br.com.filarmonica.utilities.ShowMessage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -87,9 +89,32 @@ public class MusicoDAO {
             }
             return musicos;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e); //RETIRAR
+            ShowMessage.msgError(e.toString());
             return null;
         }
+    }
+    
+    public Musico searchMusico(int id) {
+        String sql = "SELECT * FROM musicos WHERE id = ?";
+        Musico m = new Musico();
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {               
+                m.setId(id);
+                m.setNome(rs.getString("nome"));
+                m.setApelido(rs.getString("apelido"));
+                m.setEmail(rs.getString("email"));
+                m.setInstrumento(rs.getString("instrumento"));
+                m.setTelefone(rs.getString("telefone"));
+                m.setAnoIngresso(rs.getInt("ano_ingresso"));
+            }
+            return m;
+        } catch (SQLException e) {
+            ShowMessage.msgError(e.toString());
+        }
+        return m;
     }
     
     public boolean delete(int id) {
