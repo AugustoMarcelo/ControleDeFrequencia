@@ -70,4 +70,20 @@ public class PagamentoDAO {
             return null;
         }
     }
+    
+    public Double listValoresRecebidos() {
+        String sql = "SELECT valor FROM pagamentos";
+        Double valor = .0d;
+        try {
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                valor+= rs.getDouble("valor");
+            }
+            return valor;
+        } catch (SQLException e) {
+            ShowMessage.msgError(e.toString());
+            return null;
+        }
+    }
 }
