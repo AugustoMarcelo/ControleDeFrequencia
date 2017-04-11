@@ -23,6 +23,10 @@ public class MusicoService {
     public List<Musico> listMusicos() {
         return musicoDao.listMusicos();
     }
+    
+    public Musico search(int id) {
+        return musicoDao.searchMusico(id);
+    }
 
     public boolean delete(int id) {
         return musicoDao.delete(id);
