@@ -7,6 +7,7 @@ import br.com.filarmonica.models.Tocata;
 import br.com.filarmonica.services.FrequenciaService;
 import br.com.filarmonica.services.MusicoService;
 import br.com.filarmonica.services.TocataService;
+import br.com.filarmonica.utilities.AlignCell;
 import br.com.filarmonica.utilities.ShowMessage;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -38,13 +39,10 @@ import java.util.Map;
 import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingConstants;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableColumn;
 
 public final class FormFrequenciaActionListener implements ActionListener, ItemListener, ListSelectionListener {
 
@@ -209,18 +207,6 @@ public final class FormFrequenciaActionListener implements ActionListener, ItemL
         } else {
             ShowMessage.msgWarning("Preencha todos os campos obrigatórios");
         }
-    }
-
-    /**
-     * MÉTODO UTILIZADO PARA CENTRALIZAR O CONTEÚDO DAS COLUNAS
-     *
-     * @param column
-     * @param align
-     */
-    public void alignCell(TableColumn column, int align) {
-        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
-        center.setHorizontalAlignment(align);
-        column.setCellRenderer(center);
     }
 
     /**
@@ -479,8 +465,8 @@ public final class FormFrequenciaActionListener implements ActionListener, ItemL
         formFrequencia.getTableFrequencia().setModel(tableModel);
         formFrequencia.getTableFrequencia().getSelectionModel().addListSelectionListener(this);
         formFrequencia.getTableFrequencia().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        alignCell(formFrequencia.getTableFrequencia().getColumnModel().getColumn(0), SwingConstants.CENTER);
-        alignCell(formFrequencia.getTableFrequencia().getColumnModel().getColumn(1), SwingConstants.CENTER);
+        AlignCell.center(formFrequencia.getTableFrequencia().getColumnModel().getColumn(0));
+        AlignCell.center(formFrequencia.getTableFrequencia().getColumnModel().getColumn(1));
     }
 
     /**
@@ -493,8 +479,8 @@ public final class FormFrequenciaActionListener implements ActionListener, ItemL
         formFrequencia.getTableFrequencia().setModel(tableModel);
         formFrequencia.getTableFrequencia().getSelectionModel().addListSelectionListener(this);
         formFrequencia.getTableFrequencia().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        alignCell(formFrequencia.getTableFrequencia().getColumnModel().getColumn(0), SwingConstants.CENTER);
-        alignCell(formFrequencia.getTableFrequencia().getColumnModel().getColumn(1), SwingConstants.CENTER);
+        AlignCell.center(formFrequencia.getTableFrequencia().getColumnModel().getColumn(0));
+        AlignCell.center(formFrequencia.getTableFrequencia().getColumnModel().getColumn(1));
     }
 
     /**

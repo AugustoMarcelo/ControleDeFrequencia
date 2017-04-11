@@ -2,17 +2,15 @@ package br.com.filarmonica.view.musicos;
 
 import br.com.filarmonica.models.Musico;
 import br.com.filarmonica.services.MusicoService;
+import br.com.filarmonica.utilities.AlignCell;
 import br.com.filarmonica.utilities.ShowMessage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
-import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableColumn;
 
 public class FormMusicosActionListener implements ActionListener, ListSelectionListener {
 
@@ -209,9 +207,9 @@ public class FormMusicosActionListener implements ActionListener, ListSelectionL
             formMusicos.getTableMusicos().getColumnModel().getColumn(1).setPreferredWidth(210);
             formMusicos.getTableMusicos().getColumnModel().getColumn(2).setPreferredWidth(20);
             /*--- ALINHANDO AS CÉLULAS AO CENTRO ----*/
-            AlignCell(formMusicos.getTableMusicos().getColumnModel().getColumn(0), SwingConstants.CENTER);
-            AlignCell(formMusicos.getTableMusicos().getColumnModel().getColumn(1), SwingConstants.CENTER);
-            AlignCell(formMusicos.getTableMusicos().getColumnModel().getColumn(2), SwingConstants.CENTER);
+            AlignCell.center(formMusicos.getTableMusicos().getColumnModel().getColumn(0));
+            AlignCell.center(formMusicos.getTableMusicos().getColumnModel().getColumn(1));
+            AlignCell.center(formMusicos.getTableMusicos().getColumnModel().getColumn(2));
         }
     }
 
@@ -225,15 +223,9 @@ public class FormMusicosActionListener implements ActionListener, ListSelectionL
         formMusicos.getTableMusicos().getColumnModel().getColumn(1).setPreferredWidth(210);
         formMusicos.getTableMusicos().getColumnModel().getColumn(2).setPreferredWidth(20);
         /*--- ALINHANDO AS CÉLULAS AO CENTRO ----*/
-        AlignCell(formMusicos.getTableMusicos().getColumnModel().getColumn(0), SwingConstants.CENTER);
-        AlignCell(formMusicos.getTableMusicos().getColumnModel().getColumn(1), SwingConstants.CENTER);
-        AlignCell(formMusicos.getTableMusicos().getColumnModel().getColumn(2), SwingConstants.CENTER);
-    }
-
-    public void AlignCell(TableColumn column, int align) {
-        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
-        center.setHorizontalAlignment(align);
-        column.setCellRenderer(center);
+        AlignCell.center(formMusicos.getTableMusicos().getColumnModel().getColumn(0));
+        AlignCell.center(formMusicos.getTableMusicos().getColumnModel().getColumn(1));
+        AlignCell.center(formMusicos.getTableMusicos().getColumnModel().getColumn(2));
     }
 
     @Override

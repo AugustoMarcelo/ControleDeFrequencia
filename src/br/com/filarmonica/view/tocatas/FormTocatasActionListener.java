@@ -2,6 +2,7 @@ package br.com.filarmonica.view.tocatas;
 
 import br.com.filarmonica.models.Tocata;
 import br.com.filarmonica.services.TocataService;
+import br.com.filarmonica.utilities.AlignCell;
 import br.com.filarmonica.utilities.ShowMessage;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -9,11 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
-import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableColumn;
 
 public class FormTocatasActionListener implements ActionListener, ListSelectionListener, KeyListener {
 
@@ -102,14 +100,6 @@ public class FormTocatasActionListener implements ActionListener, ListSelectionL
         formTocatas.getTextFieldSearch().addKeyListener(this);
     }
 
-    /*-------------- ALINHANDO O CONTEÚDO DAS CÉLULAS DA TABELA -----------*/
-    public void alignCell(TableColumn column, int align) {
-        DefaultTableCellRenderer defaultTableCellRenderer = new DefaultTableCellRenderer();
-        defaultTableCellRenderer.setHorizontalAlignment(align);
-        column.setCellRenderer(defaultTableCellRenderer);
-
-    }
-
     public boolean checkInputFields() {
         return !formTocatas.getTextFieldLocal().getText().isEmpty() && !"".equals(formTocatas.getDateChooserData().getDate()) && (formTocatas.getTextAreaComentarios().getText().length() + 1) < 255;
     }
@@ -191,10 +181,10 @@ public class FormTocatasActionListener implements ActionListener, ListSelectionL
             formTocatas.getTableTocatas().getColumnModel().getColumn(1).setPreferredWidth(200);
             formTocatas.getTableTocatas().getColumnModel().getColumn(2).setPreferredWidth(10);
             formTocatas.getTableTocatas().getColumnModel().getColumn(3).setPreferredWidth(5);
-            alignCell(formTocatas.getTableTocatas().getColumnModel().getColumn(0), SwingConstants.CENTER);
-            alignCell(formTocatas.getTableTocatas().getColumnModel().getColumn(1), SwingConstants.CENTER);
-            alignCell(formTocatas.getTableTocatas().getColumnModel().getColumn(2), SwingConstants.CENTER);
-            alignCell(formTocatas.getTableTocatas().getColumnModel().getColumn(3), SwingConstants.CENTER);
+            AlignCell.center(formTocatas.getTableTocatas().getColumnModel().getColumn(0));
+            AlignCell.center(formTocatas.getTableTocatas().getColumnModel().getColumn(1));
+            AlignCell.center(formTocatas.getTableTocatas().getColumnModel().getColumn(2));
+            AlignCell.center(formTocatas.getTableTocatas().getColumnModel().getColumn(3));
         }
     }
 
@@ -208,10 +198,10 @@ public class FormTocatasActionListener implements ActionListener, ListSelectionL
             formTocatas.getTableTocatas().getColumnModel().getColumn(1).setPreferredWidth(200);
             formTocatas.getTableTocatas().getColumnModel().getColumn(2).setPreferredWidth(10);
             formTocatas.getTableTocatas().getColumnModel().getColumn(3).setPreferredWidth(5);
-            alignCell(formTocatas.getTableTocatas().getColumnModel().getColumn(0), SwingConstants.CENTER);
-            alignCell(formTocatas.getTableTocatas().getColumnModel().getColumn(1), SwingConstants.CENTER);
-            alignCell(formTocatas.getTableTocatas().getColumnModel().getColumn(2), SwingConstants.CENTER);
-            alignCell(formTocatas.getTableTocatas().getColumnModel().getColumn(3), SwingConstants.CENTER);
+            AlignCell.center(formTocatas.getTableTocatas().getColumnModel().getColumn(0));
+            AlignCell.center(formTocatas.getTableTocatas().getColumnModel().getColumn(1));
+            AlignCell.center(formTocatas.getTableTocatas().getColumnModel().getColumn(2));
+            AlignCell.center(formTocatas.getTableTocatas().getColumnModel().getColumn(3));
         }
     }
 
