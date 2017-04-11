@@ -1,7 +1,6 @@
 package br.com.filarmonica.dao;
 
 import br.com.filarmonica.models.Frequencia;
-import br.com.filarmonica.models.ModelToPDF;
 import br.com.filarmonica.models.Musico;
 import br.com.filarmonica.models.Tocata;
 import br.com.filarmonica.utilities.ShowMessage;
@@ -221,46 +220,4 @@ public class FrequenciaDAO {
             return false;
         }
     }
-
-    public List<ModelToPDF> listToPDF(Tocata t) {
-        String sql = "SELECT m.nome, IF(f.presenca = 0,'FALTOU','PRESENTE') AS presenca FROM musicos m, frequencia f, tocatas t WHERE m.id = f.id_musico AND t.id = f.id_tocata AND t.id = ? GROUP BY f.id_musico ORDER BY m.nome";
-        List<ModelToPDF> models = new ArrayList<>();
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1, t.getId());
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                ModelToPDF m = new ModelToPDF();
-                m.setNomeMusico(rs.getString("nome"));
-                m.setPresenca(rs.getString("presenca"));
-                models.add(m);
-            }
-            return models;
-        } catch (Exception e) {
-            ShowMessage.msgError(e.toString());
-            return null;
-        }
-    }
-
-    public List<ModelToPDF> listToPDF(String dataInicio, String dataFim) {
-        String sql = "SELECT m.nome, IF(f.presenca = 0,'FALTOU','PRESENTE') AS presenca FROM musicos m, frequencia f, tocatas t WHERE m.id = f.id_musico AND f.presenca<> 1 AND(t.data BETWEEN ? AND ?) AND t.id = f.id_tocata GROUP BY f.id_musico ORDER BY m.nome";
-        List<ModelToPDF> models = new ArrayList<>();
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, dataInicio);
-            ps.setString(2, dataFim);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                ModelToPDF m = new ModelToPDF();
-                m.setNomeMusico(rs.getString("nome"));
-                m.setPresenca(rs.getString("presenca"));
-                models.add(m);
-            }
-            return models;
-        } catch (Exception e) {
-            ShowMessage.msgError(e.toString());
-            return null;
-        }
-    }
-
 }
