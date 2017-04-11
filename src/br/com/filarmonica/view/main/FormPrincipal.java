@@ -25,6 +25,10 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         desktopPanel = new javax.swing.JDesktopPane();
         labelConexao = new javax.swing.JLabel();
+        labelConexaoTexto = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        labelDevelopedBy = new javax.swing.JLabel();
+        labelDevelopedBy1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menuCadastros = new javax.swing.JMenu();
         menuItemMusicos = new javax.swing.JMenuItem();
@@ -41,12 +45,21 @@ public class FormPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerência de Músicos e Tocatas");
 
-        labelConexao.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        labelConexao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelConexao.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        labelConexao.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labelConexao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/database-disconnect.png"))); // NOI18N
         labelConexao.setText("Sem conexão");
-        desktopPanel.add(labelConexao);
-        labelConexao.setBounds(890, 530, 120, 20);
+
+        labelConexaoTexto.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        labelConexaoTexto.setText("Status do Banco de Dados: ");
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        labelDevelopedBy.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        labelDevelopedBy.setText("Desenvolvido por:");
+
+        labelDevelopedBy1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        labelDevelopedBy1.setText("mrclgst10@gmail.com");
 
         menuCadastros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/filarmonica/images/form-add.png"))); // NOI18N
         menuCadastros.setMnemonic('c');
@@ -124,10 +137,31 @@ public class FormPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(desktopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1015, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelConexaoTexto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelConexao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelDevelopedBy)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelDevelopedBy1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelConexao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelConexaoTexto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator1)
+                    .addComponent(labelDevelopedBy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelDevelopedBy1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         setSize(new java.awt.Dimension(1031, 618));
@@ -234,7 +268,11 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPanel;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelConexao;
+    private javax.swing.JLabel labelConexaoTexto;
+    private javax.swing.JLabel labelDevelopedBy;
+    private javax.swing.JLabel labelDevelopedBy1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuCadastros;
     private javax.swing.JMenu menuFinancas;

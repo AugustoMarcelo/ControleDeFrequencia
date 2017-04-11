@@ -1,6 +1,7 @@
 package br.com.filarmonica.view.main;
 
 import br.com.filarmonica.constants.Constantes;
+import br.com.filarmonica.utilities.ShowMessage;
 import br.com.filarmonica.view.financeiro.FormFinancas;
 import br.com.filarmonica.view.frequencia.FormFrequencia;
 import br.com.filarmonica.view.musicos.FormMusicos;
@@ -9,6 +10,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyVetoException;
 import java.net.URL;
 import javax.swing.JOptionPane;
 
@@ -19,6 +21,7 @@ public class FormPrincipalActionListener implements ActionListener {
     
     public FormPrincipalActionListener(FormPrincipal formPrincipal) {
         this.formPrincipal = formPrincipal;
+        //this.formPrincipal.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
         formPrincipal.setResizable(false);
         service = new PrincipalService();
         addListener();
@@ -33,19 +36,34 @@ public class FormPrincipalActionListener implements ActionListener {
             case "Caixa":
                 FormFinancas formFinancas = new FormFinancas();
                 formPrincipal.getDesktopPanel().add(formFinancas);
+                try {
+                    formFinancas.setMaximum(true);
+                } catch (PropertyVetoException e) {
+                    ShowMessage.msgError(e.toString());
+                }
                 formFinancas.setVisible(true);
-                formFinancas.setCenterPosition();
+                //formFinancas.setCenterPosition();
                 break;
                 
             case "Lista":
                 FormFrequencia formFrequencia = new FormFrequencia();
                 formPrincipal.getDesktopPanel().add(formFrequencia);
+                try {
+                    formFrequencia.setMaximum(true);
+                } catch (PropertyVetoException e) {
+                    ShowMessage.msgError(e.toString());
+                }
                 formFrequencia.setVisible(true);
                 break;
 
             case "Musicos":
                 FormMusicos formMusicos = new FormMusicos();
                 formPrincipal.getDesktopPanel().add(formMusicos);
+                try {
+                    formMusicos.setMaximum(true);
+                } catch (PropertyVetoException e) {
+                    ShowMessage.msgError(e.toString());
+                }
                 formMusicos.setVisible(true);
                 break;
 
@@ -63,6 +81,11 @@ public class FormPrincipalActionListener implements ActionListener {
             case "Tocatas":
                 FormTocatas formTocatas = new FormTocatas();
                 formPrincipal.getDesktopPanel().add(formTocatas);
+                try {
+                    formTocatas.setMaximum(true);
+                } catch (PropertyVetoException e) {
+                    ShowMessage.msgError(e.toString());
+                }
                 formTocatas.setVisible(true);
                 break;
         }
