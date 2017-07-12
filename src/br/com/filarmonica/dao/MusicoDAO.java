@@ -46,7 +46,7 @@ public class MusicoDAO {
     }
     
     public List<Musico> listMusicos() {
-        String sql = "SELECT * FROM musicos ORDER BY nome";
+        String sql = "SELECT * FROM musicos ORDER BY id";
         List<Musico> musicos = new ArrayList<>();
         try {
             stmt = conn.prepareStatement(sql);
@@ -70,7 +70,7 @@ public class MusicoDAO {
     }
     
     public List<Musico> searchMusicos(String nome) {
-        String sql = "SELECT * FROM musicos WHERE nome LIKE ? ORDER BY nome";
+        String sql = "SELECT * FROM musicos WHERE nome LIKE ? ORDER BY id";
         List<Musico> musicos = new ArrayList<>();
         try {
             ps = conn.prepareStatement(sql);
