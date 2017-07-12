@@ -34,6 +34,7 @@ public class FormConfirmacaoPagamentoActionListener implements ActionListener {
                 if(debitar()) {
                     ShowMessage.msgSuccess("Débito realizado com sucesso!");
                     this.formConfirmacao.dispose();
+                    FormFinancasActionListener.updateFormFinancas();
                 }
                 break;
             case "Cancelar":

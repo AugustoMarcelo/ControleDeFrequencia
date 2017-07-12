@@ -23,10 +23,10 @@ import javax.swing.event.ListSelectionListener;
 public class FormFinancasActionListener implements ActionListener, ListSelectionListener{
     
     private MusicoService musicosService;
-    private PagamentoService pService;
+    private static PagamentoService pService;
     private MusicosTableModel musicosTableModel;
     private PagamentosTableModel pagamentosTableModel;
-    private FormFinancas formFinancas;
+    private static FormFinancas formFinancas;
     
     
     public FormFinancasActionListener(FormFinancas formFinancas) {
@@ -38,6 +38,11 @@ public class FormFinancasActionListener implements ActionListener, ListSelection
         startTableMusicos();
         startTablePagamentos();
         addListener();
+    }
+    
+    public static void updateFormFinancas() {
+        setAReceber();
+        setEmCaixa();
     }
     
     public void addListener() {
@@ -127,7 +132,7 @@ public class FormFinancasActionListener implements ActionListener, ListSelection
         return m;
     }
     
-    private void setEmCaixa() {
+    private static void setEmCaixa() {
         formFinancas.getLabelTotalCaixa().setText("R$ "+pService.listValoresRecebidos().toString().replace(".", ","));
     }
     
@@ -136,7 +141,7 @@ public class FormFinancasActionListener implements ActionListener, ListSelection
         formFinancas.getLabelDividaMusico().setText("R$ "+valor.toString().replace(".", ","));
     }
     
-    private void setAReceber() {
+    private static void setAReceber() {
         Double aReceber = pService.listAreceber() - pService.listValoresRecebidos();
         formFinancas.getLabelTotalReceber().setText("R$ "+aReceber.toString().replace(".", ","));
     }
