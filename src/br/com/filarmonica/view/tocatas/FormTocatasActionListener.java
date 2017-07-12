@@ -110,6 +110,8 @@ public class FormTocatasActionListener implements ActionListener, ListSelectionL
         formTocatas.getTextAreaComentarios().setText(null);
         formTocatas.getDateChooserData().setDate(null);
         formTocatas.getFormattedFieldHora().setText(null);
+        formTocatas.getTableTocatas().getSelectionModel().clearSelection();
+        formTocatas.getLabelMaxText().setText("0/255");
     }
 
     public boolean delete(int id) {
@@ -165,6 +167,7 @@ public class FormTocatasActionListener implements ActionListener, ListSelectionL
         formTocatas.getTextAreaComentarios().setText(t.getComentarios());
         formTocatas.getFormattedFieldHora().setText(t.getHorario());
         formTocatas.getDateChooserData().setDate(t.getData());
+        formTocatas.getLabelMaxText().setText(formTocatas.getTextAreaComentarios().getText().length()+"/255");
     }
 
     public boolean save() {
