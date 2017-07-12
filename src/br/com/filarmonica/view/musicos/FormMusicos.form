@@ -242,7 +242,7 @@
                 <StringItem index="9" value="Trompa"/>
                 <StringItem index="10" value="Trompete"/>
                 <StringItem index="11" value="Tuba - Mib"/>
-                <StringItem index="12" value="Tuba - Si"/>
+                <StringItem index="12" value="Tuba - Sib"/>
               </StringArray>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>

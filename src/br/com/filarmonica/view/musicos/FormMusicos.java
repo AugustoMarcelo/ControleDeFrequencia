@@ -187,7 +187,7 @@ public class FormMusicos extends javax.swing.JInternalFrame {
 
         labelInstrumentos.setText("Instrumento:*");
 
-        comboInstrumentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Batuta", "Bombardino", "Clarinete", "Percussão", "Requinta", "Sax-alto", "Sax-tenor", "Trombone", "Trompa", "Trompete", "Tuba - Mib", "Tuba - Si" }));
+        comboInstrumentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Batuta", "Bombardino", "Clarinete", "Percussão", "Requinta", "Sax-alto", "Sax-tenor", "Trombone", "Trompa", "Trompete", "Tuba - Mib", "Tuba - Sib" }));
         comboInstrumentos.setEnabled(false);
 
         labelAnoIngresso.setText("Ano de Ingresso:");

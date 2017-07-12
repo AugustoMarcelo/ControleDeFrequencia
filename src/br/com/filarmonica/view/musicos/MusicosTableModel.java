@@ -37,7 +37,7 @@ public class MusicosTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         Musico musico = musicos.get(rowIndex);
         switch(columnIndex) {
-            case 0: return musico.getId();
+            case 0: return musico.getId() < 10 ? "0"+musico.getId() : musico.getId();
             case 1: return musico.getNome();
             case 2: return musico.getInstrumento();
         }

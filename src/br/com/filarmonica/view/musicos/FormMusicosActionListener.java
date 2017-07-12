@@ -129,6 +129,7 @@ public class FormMusicosActionListener implements ActionListener, ListSelectionL
         formMusicos.getTextFieldEmail().setText(null);
         formMusicos.getTextFieldAnoIngresso().setText(null);
         formMusicos.getComboInstrumentos().setSelectedIndex(0);
+        formMusicos.getTableMusicos().getSelectionModel().clearSelection();
     }
 
     public boolean delete(int id) {
@@ -178,7 +179,7 @@ public class FormMusicosActionListener implements ActionListener, ListSelectionL
         musico.setTelefone(formMusicos.getTextFieldTelefone().getText());
         musico.setEmail(formMusicos.getTextFieldEmail().getText());
         musico.setInstrumento(formMusicos.getComboInstrumentos().getSelectedItem().toString());
-        musico.setAnoIngresso(Integer.parseInt(formMusicos.getTextFieldAnoIngresso().getText()));
+        musico.setAnoIngresso(!formMusicos.getTextFieldAnoIngresso().getText().isEmpty() ? Integer.parseInt(formMusicos.getTextFieldAnoIngresso().getText()) : 0);
         return musico;
     }
 
@@ -189,7 +190,7 @@ public class FormMusicosActionListener implements ActionListener, ListSelectionL
         formMusicos.getTextFieldTelefone().setText(m.getTelefone());
         formMusicos.getTextFieldEmail().setText(m.getEmail());
         formMusicos.getComboInstrumentos().setSelectedItem(m.getInstrumento());
-        formMusicos.getTextFieldAnoIngresso().setText(String.valueOf(m.getAnoIngresso()));
+        formMusicos.getTextFieldAnoIngresso().setText(m.getAnoIngresso() == 0 ? "" : String.valueOf(m.getAnoIngresso()));
     }
 
     public boolean save() {
